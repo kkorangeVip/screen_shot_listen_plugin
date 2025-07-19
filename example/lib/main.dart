@@ -24,10 +24,11 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
  initPlatformState()  {
-   ScreenShotListenPlugin().addScreenShotListener((s){
-     print("ScreenShotListenPlugin>>>>>>$s");
-   });
-   ScreenShotListenPlugin().startListen();
+   ScreenShotListenPlugin.instance
+     ..setListeners(onScreenShot: (s) {
+       print("ScreenShotListenPlugin>>>>>>$s");
+     })
+     ..startListen();
 //    String platformVersion;
 //    // Platform messages may fail, so we use a try/catch PlatformException.
 //    try {
